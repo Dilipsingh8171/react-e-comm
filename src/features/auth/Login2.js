@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import loginImage from '../../assets/images/image1.jpg'; // Replace with the actual path to your image
 
 const Login2 = () => {
@@ -67,7 +67,8 @@ const Login2 = () => {
                             className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                         <p className="text-gray-600 text-sm text-center">
-                            If you have to create an account? <a href="#" className="text-blue-500 hover:underline">Signup</a>
+                            If you have to create an account?
+                             <Link to='/register'   className="text-blue-500 hover:underline">Signup</Link>
                         </p>
                         <button
                             type="submit"

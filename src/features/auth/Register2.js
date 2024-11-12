@@ -21,15 +21,37 @@ const Register2 = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+  
     if (data.name && data.email && data.password) {
-      // Handle successful form submission
-      console.log('Form Submitted', data);
-      navigate('/success');  // Redirect to success page
+      // Get existing users from localStorage, or initialize an empty array if no users are stored
+      const existingUsers = JSON.parse(localStorage.getItem('user')) || [];
+      
+      // Add the new user data to the array
+      existingUsers.push(data);
+  
+      // Save the updated array back to localStorage
+      localStorage.setItem('user', JSON.stringify(existingUsers));
+  
+      // Redirect to login page after registration
+      navigate('/login');
+      console.log('Form Submitted and saved to localStorage', data);
     } else {
       // Handle validation errors
       console.log('All fields are required!');
     }
   };
+  
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   if (data.name && data.email && data.password) {
+  //     // Handle successful form submission
+  //     console.log('Form Submitted', data);
+  //     navigate('/login');  // Redirect to success page
+  //   } else {
+  //     // Handle validation errors
+  //     console.log('All fields are required!');
+  //   }
+  // };
 
   return (
     <div className="flex justify-center items-center mt-2">
